@@ -7,9 +7,16 @@ const Bottles = () => {
   const [cart, setCart] = useState(getCartData());
 
   const handleAddToCart = (bottle) => {
-    const newCart = [...cart, bottle];
+    const name = bottle.name;
+    const img = bottle.img;
+    const price = bottle.price;
+
+    const shortData = { name, img, price, id: bottle.id };
+
+    const newCart = [...cart, shortData];
+
     setCart(newCart);
-    addToStorage(bottle);
+    addToStorage(shortData);
   };
 
   useEffect(() => {
